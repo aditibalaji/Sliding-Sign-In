@@ -1,0 +1,218 @@
+*{
+	box-sizing: border-box;
+}
+body{
+	font-family: "Microsoft Jhenghei Light";
+	background: #f1f1f1;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+}
+p{
+	margin: 20px 0 20px 0;
+	font-weight: 700;
+}
+.container{
+	background-color: #ffffff;
+	border-radius: 20px;
+	border: 1px solid #000000;
+	position: relative;
+	overflow: hidden;
+	width: 800px;
+	max-width: 100%;
+	min-height: 480px;
+}
+form{
+	display: flex;
+	flex-direction: column;
+	padding: 0 50px;
+	height: 100%;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}
+.form-main input{
+	background-color: #f1f1f1;
+	border: none;
+	border-radius: 5px;
+	margin: 10px 0 10px 0;
+	padding: 15px 20px;
+	width: 75%;
+}
+button{
+	border-radius: 22px;
+	border: none;
+	background-color: #bed2fe;
+	padding: 15px 25px;
+	margin-top: 20px;
+	font-size: 15px;
+	opacity: 1;
+	transition: transform 60ms ease-out;
+}
+button:focus{
+	outline: none;
+}
+.form-main{
+	position: absolute;
+	top: 0;
+	height: 100%;
+	transition: all 0.6s ease-in-out;
+}
+.sign-in{
+	left: 0;
+	width: 50%;
+	z-index: 1;
+}
+.sign-up{
+	left: 0;
+	width: 50%;
+	z-index: -1;
+	opacity: 0;
+}
+.overlay-container{
+	position: absolute;
+	top: 0;
+	left: 50%;
+	width: 50%;
+	height: 100%;
+	overflow: hidden;
+	transition: transform 0.6s ease-in-out;
+}
+.overlay-main{
+	background-color: #7890f1;
+	position: relative;
+	left: -100%;
+	height: 100%;
+	width: 200%;
+	z-index: 3;
+	transform: translateX(0);
+	transition: transform 0.6s ease-in-out;
+}
+.overlay{
+	position: absolute;
+	top: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	width: 50%;
+	text-align: center;
+	transform: translateX(0);
+	transition: transform 0.6s ease-in-out;
+
+}
+.overlay-right{
+	right: 0;
+	transform: translateX();
+	z-index: 3;
+}
+.overlay-left{
+	transform: translateX(-50%);
+	z-index: -1;
+}
+
+
+
+.container.right-panel-active .sign-in{
+	transform: translateX(100%);
+	opacity: 0;
+	z-index: -1;
+}
+.container.right-panel-active .overlay-container{
+	transform: translateX(-100%);
+	opacity: 1;
+	z-index: 3;
+}
+.container.right-panel-active .sign-up{
+	transform: translateX(100%);
+	opacity: 1;
+	z-index: 0;
+}
+.container.right-panel-active .overlay-main{
+	transform: translateX(50%);
+}
+.container.right-panel-active .overlay-left{
+	transform: translateX(0);
+	z-index: 2;
+}
+.container.right-panel-active .overlay-right{
+	transform: translateX(20%);
+}
+
+
+
+@media only screen and (max-width: 768px)
+{
+	body{
+		height: 175vh;
+	}
+	.container{
+		position: absolute;
+		top: 5vh;
+		width: 95%;
+		height: 900px;
+		min-height: 700px;
+	}
+	form{
+		width: 100%;
+		height: 50%;
+	}
+	.form-main{
+		/*position: absolute;*/
+		width: 100%;
+		height: 50%;
+		/*flex-flow: row nowrap;*/ /* Force no wrapping */
+	}
+	.sign-in{
+		top: 80px;
+	}
+	.sign-up{
+		top: 30%;
+	}
+	.overlay-container{
+		/*position: absolute;*/
+		width: 100%;
+		height: 50%;
+		left: 0;
+		top: 50%;
+	}
+	.overlay-left{
+		transform: translateY(40%);
+	}
+
+
+
+	.container.right-panel-active .sign-in{
+		transform: translateY(100%);
+		opacity: 0;
+		z-index: -1;
+	}
+	.container.right-panel-active .overlay-container{
+		transform: translateY(-100%);
+		opacity: 1;
+		/*z-index: 3;*/
+	}
+	.container.right-panel-active .sign-up{
+		transform: translateY(60%);
+		opacity: 1;
+		z-index: 0;
+	}
+	.container.right-panel-active .overlay-main{
+		transform: translateY(-5%);
+		/*top: 0;*/
+	}
+	.container.right-panel-active .overlay-left{
+		transform: translateY(0);
+		opacity: 1;
+		z-index: 2;
+	}
+	.container.right-panel-active .overlay-right{
+		transform: translateY(10%);
+		opacity: 0;
+		/*z-index: 4;*/
+	}
+
+}
